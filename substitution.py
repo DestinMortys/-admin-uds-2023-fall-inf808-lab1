@@ -86,5 +86,3 @@ print("*** question 11")
 clear_text_1 = guess_clear_text(cipher_text_1, decryption_key)
 print("decryption_key: %s" % decryption_key)
 print("clear_text_1: %s" % clear_text_1)
-
-
