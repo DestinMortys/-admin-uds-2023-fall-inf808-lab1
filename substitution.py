@@ -3,9 +3,9 @@ from binascii import hexlify
 import textwrap
 
 
-def freq_text( text_hugo:str )->list:
+def freq_text( clear_text_hugo:str )->list:
   freq = {}
-  for letter in text_hugo:
+  for letter in clear_text_hugo:
         if letter == '\n':
           continue
         if letter in freq:
@@ -15,11 +15,11 @@ def freq_text( text_hugo:str )->list:
   return sorted(freq.items(), key=lambda item : item[1], reverse=True)
 
 
-def freq_cipher( encrypted_text:bytes ) ->list:
+def freq_cipher( cipher_text_1:bytes ) ->list:
   freq = {}
-  for index in range(len(encrypted_text)):
+  for index in range(len(cipher_text_1)):
     if index%2 == 0:
-            char = encrypted_text[index:index+2] 
+            char = cipher_text_1[index:index+2] 
             if char in freq:
                 freq[char] += 1
             else:
@@ -29,11 +29,11 @@ def freq_cipher( encrypted_text:bytes ) ->list:
 
 
 
-def guess_clear_text(encrypted_text:bytes, decryption_key:dict)  -> str:
+def guess_clear_text(cipher_text_1:bytes, decryption_key:dict)  -> str:
     clear_text = ""
-    for index in range(len(encrypted_text)):
+    for index in range(len(cipher_text_1)):
         if index % 2 == 0:
-            char = encrypted_text[index:index+2]  
+            char = cipher_text_1[index:index+2]  
             clear_char = decryption_key.get(char, "%s" % char)
             clear_text += clear_char
     return clear_text
