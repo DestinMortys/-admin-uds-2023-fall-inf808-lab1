@@ -87,23 +87,4 @@ clear_text_1 = guess_clear_text(cipher_text_1, decryption_key)
 print("decryption_key: %s" % decryption_key)
 print("clear_text_1: %s" % clear_text_1)
 
-"""
-print( "*** question 12" )
-freq_cipher_text_2 = freq_cipher( cipher_text_2 )
-decryption_key = build_decryption_key(  freq_hugo, freq_cipher_text_2, key_size=15 )
-print("decryption_key: %s"%decryption_key)
-clear_text_2 = guess_clear_text( cipher_text_2, decryption_key ) 
-print("clear_text_2: %s"%clear_text_2 )
 
-print( "*** question 13" )
-indice = "Anton Voyl n'arrivait pas à dormir"
-  
-decryption_key = {}
-
-for index in range(len(indice)):
-            bin_char = cipher_text_2[2 * index : 2 * index +  2 ]
-            decryption_key[ bin_char ] = indice[ index ]  
-  
-clear_text_2 = guess_clear_text( cipher_text_2, decryption_key) 
-print("clear_text_2: %s"%clear_text_2 )
-"""
