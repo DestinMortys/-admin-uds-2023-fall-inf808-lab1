@@ -1,5 +1,4 @@
 import random
-intercepted_message = 'fytgpcdtep op dspcmczzvp'
 
 
 def encrypt(clear_text):
@@ -24,7 +23,7 @@ def encrypt(clear_text):
 
 
 def decrypt(cipher_text):
-    clear_text = list[str]
+    clear_text = ""
 
     for key in range(26):
         decrypted_text = ""
@@ -47,32 +46,13 @@ def decrypt(cipher_text):
 
     return clear_text
 
+clear_text = "À la compagne, comme des fêtards;"
+encrypted_text = encrypt(clear_text)
+decrypted_text = decrypt(clear_text)
 
-def brute_force(intercepted_message):
-    brute_force_dict = {}
+# Vérifier que la combinaison decrypt(encrypt(clear_text, key)) retourne clear_text
+print("Texte chiffré:", encrypted_text)
+print("Texte original:", clear_text)
+print("Texte déchiffré après chiffrement et déchiffrement:", decrypted_text)
 
-    for key in range(26):  # Il y a 26 décalages possibles dans l'alphabet
-        clear_text = ""
-        for char in intercepted_message:
-            if char.isalpha():
-                if char.isupper():
-                    decrypted_char = chr(
-                        ((ord(char) - ord('A') - key) % 26) + ord('A'))
-                else:
-                    decrypted_char = chr(
-                        ((ord(char) - ord('a') - key) % 26) + ord('a'))
-                clear_text += decrypted_char
-            else:
-                clear_text += char
-
-        brute_force_dict[key] = clear_text
-
-    return brute_force_dict
-
-
-# Attaque de force brute
-result = brute_force(intercepted_message)
-
-# Affichage des résultats
-for key, clear_text in result.items():
-    print(f'Clé {key}: {clear_text}')
+# End-of-file (EOF)
