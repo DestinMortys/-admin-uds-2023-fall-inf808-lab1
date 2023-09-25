@@ -23,7 +23,7 @@ def encrypt(clear_text):
 
 
 def decrypt(cipher_text):
-    decrypted_text = ""
+    clear_text = ""
 
     for key in range(26):
         decrypted_text = ""
@@ -46,7 +46,8 @@ def decrypt(cipher_text):
 
     return clear_text
 
-clear_text = "Doué, mais dû"
+clear_text = "À la compagne, comme des fêtards;"
+
 encrypted_text = encrypt(clear_text)
 decrypted_text = decrypt(encrypted_text)
 
