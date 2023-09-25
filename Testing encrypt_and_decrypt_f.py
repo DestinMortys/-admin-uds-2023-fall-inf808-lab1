@@ -23,7 +23,7 @@ def encrypt(clear_text):
 
 
 def decrypt(cipher_text):
-    clear_text = ""
+    decrypted_text = ""
 
     for key in range(26):
         decrypted_text = ""
@@ -46,9 +46,9 @@ def decrypt(cipher_text):
 
     return clear_text
 
-clear_text = "À la compagne, comme des fêtards;"
+clear_text = "Doué, mais dû"
 encrypted_text = encrypt(clear_text)
-decrypted_text = decrypt(clear_text)
+decrypted_text = decrypt(encrypted_text)
 
 # Vérifier que la combinaison decrypt(encrypt(clear_text, key)) retourne clear_text
 print("Texte chiffré:", encrypted_text)

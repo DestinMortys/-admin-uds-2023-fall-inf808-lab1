@@ -3,11 +3,10 @@ intercepted_message = 'fytgpcdtep op dspcmczzvp'
 
 
 def encrypt(clear_text):
-    # Génération aléatoire de la clé dans la plage de 1 à 25 inclus
     cipher_text = ""
 
     for char in clear_text:
-        key = random.randint(1, 25)
+        key = random.randint(1, 25) # Génération aléatoire de la clé dans la plage de 1 à 25 inclus
         if 'a' <= char <= 'z':
             encrypted_char = chr(
                 ((ord(char) - ord('a') + key) % 26) + ord('a'))
@@ -24,7 +23,7 @@ def encrypt(clear_text):
 
 
 def decrypt(cipher_text):
-    clear_text = list[str]
+    clear_text = ""
 
     for key in range(26):
         decrypted_text = ""
