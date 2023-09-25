@@ -1,12 +1,9 @@
 import random
 
-
-def encrypt(clear_text):
-    # Génération aléatoire de la clé dans la plage de 1 à 25 inclus
+def encrypt(clear_text, key):
     cipher_text = ""
 
     for char in clear_text:
-        key = random.randint(1, 25)
         if 'a' <= char <= 'z':
             encrypted_char = chr(
                 ((ord(char) - ord('a') + key) % 26) + ord('a'))
@@ -22,34 +19,28 @@ def encrypt(clear_text):
     return cipher_text
 
 
-def decrypt(cipher_text):
+def decrypt(cipher_text, key):
     clear_text = ""
 
-    for key in range(26):
-        decrypted_text = ""
-        for char in cipher_text:
-            if 'a' <= char <= 'z':
-                decrypted_char = chr(
-                    ((ord(char) - ord('a') - key) % 26) + ord('a'))
-            elif 'A' <= char <= 'Z':
-                char = char.lower()
-                decrypted_char = chr(
-                    ((ord(char) - ord('a') - key) % 26) + ord('a'))
-            else:
-                decrypted_char = char
-            decrypted_text += decrypted_char
-
-        # Vérifier si le texte déchiffré est une option valide
-        if decrypted_text.islower():
-            clear_text = decrypted_text
-            break
+    for char in cipher_text:
+        if 'a' <= char <= 'z':
+            decrypted_char = chr(
+                ((ord(char) - ord('a') - key) % 26) + ord('a'))
+        elif 'A' <= char <= 'Z':
+            char = char.lower()
+            decrypted_char = chr(
+                ((ord(char) - ord('a') - key) % 26) + ord('a'))
+        else:
+            decrypted_char = char
+        clear_text += decrypted_char
 
     return clear_text
 
-clear_text = "À la compagne, comme des fêtards;"
+clear_text = "Hello, World!"
+key = random.randint(1, 25)
 
-encrypted_text = encrypt(clear_text)
-decrypted_text = decrypt(encrypted_text)
+encrypted_text = encrypt(clear_text, key)
+decrypted_text = decrypt(encrypted_text, key)
 
 # Vérifier que la combinaison decrypt(encrypt(clear_text, key)) retourne clear_text
 print("Texte chiffré:", encrypted_text)
