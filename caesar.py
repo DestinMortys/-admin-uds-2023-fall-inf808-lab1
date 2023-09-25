@@ -6,7 +6,8 @@ def encrypt(clear_text):
     cipher_text = ""
 
     for char in clear_text:
-        key = random.randint(1, 25) # Génération aléatoire de la clé dans la plage de 1 à 25 inclus
+        # Génération aléatoire de la clé dans la plage de 1 à 25 inclus
+        key = random.randint(1, 25)
         if 'a' <= char <= 'z':
             encrypted_char = chr(
                 ((ord(char) - ord('a') + key) % 26) + ord('a'))
@@ -75,3 +76,5 @@ result = brute_force(intercepted_message)
 # Affichage des résultats
 for key, clear_text in result.items():
     print(f'Clé {key}: {clear_text}')
+
+# End-of-file (EOF)
